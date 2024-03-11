@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  RelationId,
+} from 'typeorm';
+import { Company } from '../../company/entities/company.entity';
 
 @Entity()
 export class User {
@@ -30,5 +37,10 @@ export class User {
    * u - unspecified
    */
   gender: string;
-}
 
+  @RelationId((user: User) => user.company)
+  companyId: string;
+
+  @OneToOne(() => Company)
+  company: Company;
+}

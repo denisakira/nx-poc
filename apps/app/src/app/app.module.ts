@@ -9,6 +9,7 @@ import { CompanyModule } from './company/company.module';
 @Module({
   imports: [
     UserModule,
+    CompanyModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
